@@ -71,7 +71,7 @@ const storage = new GridFsStorage({
 
 //register api
 //hints: when you post the data, the data must been in form of the schema at post-schema.js
-app.post("/api/posts",(req,res)=>{
+app.post("/api/newposts",(req,res)=>{
     data.register(req.body).then((msg)=>{
         res.json({message: msg});
     }).catch((err)=>{
