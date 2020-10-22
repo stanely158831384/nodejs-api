@@ -213,6 +213,20 @@ module.exports = function (mongoDBConnectionString) {
             });
         },
 
+        findOneMenuById:function(id){
+            return new Promise((resolve,reject)=>{
+                Menu.findOne({ menuCode: id }).exec().then(data => {
+                    if(data!=null){
+                        resolve(data);
+                    }else{
+                        resolve("cannot find out");
+                    }
+                }).catch(err => {
+                    reject("find out err: " + err);
+                })
+            });
+        },
+
         //this function will save the menu
         uploadsNewMenu: function (menudata) {
             return new Promise((resolve, reject) => {

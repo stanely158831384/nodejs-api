@@ -194,8 +194,12 @@ app.get("/api/allMenus",(req,res)=>{
 
 //findone dev_tool
 
-app.post("/api/findMenu",(req,res)=>{
-    data.findOneMenuByBody(req.body).then(data=>{res.json("route: successful"+data)}).catch((err)=>{res.json("route: fail: "+err)});
+app.get("/api/findMenuByMenuCode/:menuCode",(req,res)=>{
+    data.findOneMenuById(req.params.menuCode).then(data=>{res.json(data)}).catch((err)=>{res.json("route: fail: "+err)});
+})
+
+app.post("/api/findMenuByBody",(req,res)=>{
+    data.findOneMenuByBody(req.body).then(data=>{res.json(data)}).catch((err)=>{res.json("route: fail: "+err)});
 })
 
 app.post("/api/menuDel/:menuCode",(req,res)=>{
