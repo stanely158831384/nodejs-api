@@ -3,6 +3,7 @@ let Schema = mongoose.Schema;
 
 let menuSchema = new Schema({
     menuCode:Number,
+    menuName:String,
     menu:[{
         Days:String,
         Breakfast:String,

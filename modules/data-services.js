@@ -248,7 +248,7 @@ module.exports = function (mongoDBConnectionString) {
         //this function will change the menu with the %set data.
         updatesNewMenu:function(menudata){
             return new Promise((resolve, reject) => {
-            Menu.updateOne({  menuCode:menudata.menuCode }, { $set: menudata }).exec().then(() => {
+            Menu.updateOne({  menuCode:menudata.menuCode }, { $set: menudata }).exec().then((data) => {
                 resolve(`user profile ${menudata.menuCode} successfully updated`);
             }).catch((err) => {
                 reject("update error 1 "+err);
