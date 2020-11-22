@@ -13,7 +13,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-
 //for picture uplaod and download functionality
 const crypto = require("crypto");
 const path = require("path");
