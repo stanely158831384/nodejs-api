@@ -192,7 +192,7 @@ app.post("/api/updateCurrentMenuByBody",(req,res)=>{
 
 
 //show all menus
-app.get("/api/allMenus",(req,res)=>{
+app.get("/apia/allMenus",(req,res)=>{
     data.showAllMenus().then((data)=>{res.json(data)}).catch(
         (data)=>{res.json(data)}
     );
