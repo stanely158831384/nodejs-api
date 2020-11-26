@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let menuSchema = new Schema({
+    pictureLink: String,
     menuCode:Number,
     menuName:String,
     menu:[{
