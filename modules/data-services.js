@@ -336,7 +336,7 @@ module.exports = function (mongoDBConnectionString) {
         AdjustReceiptByReceiptByBody:function(receiptData,id){
             return new Promise((resolve, reject) => {
             Receipt.updateOne({  _id:id }, { $set: receiptData }).exec().then((data) => {
-                resolve(`user profile ${receiptData._id} successfully updated`);
+                resolve(`user profile ${id} successfully updated`);
             }).catch((err) => {
                 reject("AdjustReceiptByReceiptID failed");
             })
