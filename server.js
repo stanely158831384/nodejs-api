@@ -217,6 +217,7 @@ app.post("/api/newReceipt",(req,res)=>{
     console.log("post here");
     data.createReceipt(req.body).then((data)=>{res.json(data)}).catch(
         (data)=>{res.json(data)}
+        
     );
 });
 
