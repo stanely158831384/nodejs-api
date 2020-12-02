@@ -221,17 +221,17 @@ app.post("/api/newReceipt",(req,res)=>{
 });
 
 //get receipt by id 
-app.get("api/getReceiptByUser_id/:id",(req,res)=>{
+app.get("/api/getReceiptByUser_id/:id",(req,res)=>{
     data.checkReceiptByuserID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json(data)});
 })
 
 //delete receipt by id
-app.post("api/deleteReceiptBy_id/:id",(req,res)=>{
+app.post("/api/deleteReceiptBy_id/:id",(req,res)=>{
     data.deleteReceiptByReceiptID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json(data)})
 })
 
 //adjust receipt
-app.put("api/adjustReceipt/:id",(req,res)=>{
+app.put("/api/adjustReceipt/:id",(req,res)=>{
     data.AdjustReceiptByReceiptByBody(req.body,req.params.id).then((data)=>{
         res.json({data});
     }).catch((err)=>{
