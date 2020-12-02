@@ -11,6 +11,8 @@ mongoose.Promise = global.Promise;
 
 const userSchema = require('./post-schema-user.js');
 const menuSchema = require('./post-schema-menu.js');
+const receiptSchema = require('./post-schema-receipt.js');
+
 const { promises } = require('fs');
 const { resolve } = require('path');
 
@@ -19,6 +21,7 @@ module.exports = function (mongoDBConnectionString) {
     //new
     let gfs;
     let Menu;
+    let Receipt;
     //
 
     return {
@@ -35,6 +38,7 @@ module.exports = function (mongoDBConnectionString) {
                     db.once('open', () => {
                         User = db.model("User", userSchema);
                         Menu = db.model("Menu", menuSchema);
+                        Receipt = db.model("Receipt", receiptSchema);
                         //new 
                         gfs = new mongoose.mongo.GridFSBucket(db.db, {
                             bucketName: "uploads"
@@ -291,9 +295,52 @@ module.exports = function (mongoDBConnectionString) {
 
                 
             })
+        },
+        //create a new receipt for our client
+        createReceipt: function (data) {
+            return new Promise((resolve, reject) => {
+                let newReceipt = new Receipt(data);
+                console.log(newReceipt);
+                newUser.save((err) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(`new post: ${newReceipt._id} successfully added`);
+                    }
+                })
+            })
+        },
+
+        checkReceiptByuserID: function(userID){
+            return new Promise((resolve,reject)=>{
+                Receipt.find({_id:userID}).exec().then((data)=>{
+                    resolve(data);
+                }).catch((err)=>{
+                    reject("checkReceiptByuserID failed");
+                })
+            });
+        },
+
+        deleteReceiptByReceiptID: function(receiptID){
+            return new Promise((resolve,reject)=>{
+                Receipt.deleteOne({_id:receiptID}).exec().then(()=>{
+                    resolve("receipt "+receiptID+"has been deleted");
+                }).catch((err)=>{
+                    reject("checkReceiptByuserID failed");
+                })
+            })
+        },
+
+
+        AdjustReceiptByReceiptByBody:function(receiptData){
+            return new Promise((resolve, reject) => {
+            Receipt.updateOne({  _id:receiptData._id }, { $set: receiptData }).exec().then((data) => {
+                resolve(`user profile ${receiptData._id} successfully updated`);
+            }).catch((err) => {
+                reject("AdjustReceiptByReceiptID failed");
+            })
+            })
         }
-
-
     }
 
 }

@@ -210,6 +210,38 @@ app.post("/api/menuDel/:menuCode",(req,res)=>{
 })
 
 
+//recipt api
+
+//post new receipt
+app.post("/api/newReceipt",(req,res)=>{
+    data.createReceipt().then((data)=>{res.json(data)}).catch(
+        (data)=>{res.json(data)}
+    );
+});
+
+//get receipt by id 
+app.get("api/getReceiptByUser_id/:id",(req,res)=>{
+    data.checkReceiptByuserID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json(data)});
+})
+
+//delete receipt by id
+app.post("api/deleteReceiptBy_id/:id",(req,res)=>{
+    data.deleteReceiptByReceiptID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json(data)})
+})
+
+//adjust receipt
+app.put("api/adjustReceipt/:id",(req,res)=>{
+    data.AdjustReceiptByReceiptByBody(req.body,req.params.id).then((data)=>{
+        res.json({data});
+    }).catch((err)=>{
+        res.json({message: `an error occurred: ${err}`});
+    });
+})
+
+
+
+
+
 data.connect().then(()=>{
     app.listen(HTTP_PORT, ()=>{console.log("API listening on: " + HTTP_PORT)});
 })
