@@ -299,9 +299,10 @@ module.exports = function (mongoDBConnectionString) {
         //create a new receipt for our client
         createReceipt: function (data) {
             return new Promise((resolve, reject) => {
+                console.log("get in createReceipt");
                 let newReceipt = new Receipt(data);
                 console.log(newReceipt);
-                newUser.save((err) => {
+                newReceipt.save((err) => {
                     if (err) {
                         reject(err);
                     } else {

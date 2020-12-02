@@ -1,4 +1,4 @@
-const monogoDBConnectionString = "mongodb+srv://junjieZhang:00000000@cluster0.o2clf.mongodb.net/prj666New?retryWrites=true&w=majority";
+const monogoDBConnectionString = "mongodb+srv://junjieZhang:034285719@cluster0.o2clf.mongodb.net/prj666New?retryWrites=true&w=majority";
 const HTTP_PORT = process.env.PORT || 8080;
 
 const express = require("express");
@@ -214,7 +214,8 @@ app.post("/api/menuDel/:menuCode",(req,res)=>{
 
 //post new receipt
 app.post("/api/newReceipt",(req,res)=>{
-    data.createReceipt().then((data)=>{res.json(data)}).catch(
+    console.log("post here");
+    data.createReceipt(req.body).then((data)=>{res.json(data)}).catch(
         (data)=>{res.json(data)}
     );
 });
