@@ -10,7 +10,7 @@ let userSchema = new Schema({
     password: String,
     address: String,
     accountType: Number,
-    mealPlan: [{day: String, breakFast: String, lunch: String, dinner: String}],
+    mealPlan: Number,
     language: String,
     Membership: Date,
     paymentMethod: {username: String, cardNumber: String, securityCode: String, expiredDate: Date},
