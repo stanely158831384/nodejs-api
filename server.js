@@ -162,7 +162,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 //2.download the picture with id
 app.get("/image/:filename", (req, res) => {
     // console.log('id', req.paramss.id)
-    data.downloadPicture(req.params.filename,res).then(()=>{}).catch((data)=>{res.json(data)});
+    data.downloadPicture(req.params.filename,res).then((data)=>{data}).catch((data)=>{res.json(data)});
 });
 //3.delete the picture with id
 app.post("/file/del/:id",(req,res)=>{
@@ -213,23 +213,20 @@ app.post("/api/menuDel/:menuCode",(req,res)=>{
 //recipt api
 
 //post new receipt
-app.post("/api/newReceipt",(req,res)=>{
+app.post('/api/newReceipt',(req,res)=>{
     console.log("post here");
-    data.createReceipt(req.body).then((data)=>{res.json(data)}).catch(
-        (data)=>{res.json(data)}
-
-    );
+    data.createReceipt(req.body).then((data)=>{res.json(data)}).catch((data)=>{res.json({message: data})})
 });
 
 
 //get receipt by id 
 app.get("/api/getReceiptByUser_id/:id",(req,res)=>{
-    data.checkReceiptByuserID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json(data)});
+    data.checkReceiptByuserID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json({message: data})});
 })
 
 //delete receipt by id
 app.post("/api/deleteReceiptBy_id/:id",(req,res)=>{
-    data.deleteReceiptByReceiptID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json(data)})
+    data.deleteReceiptByReceiptID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json({message: data})})
 })
 
 //adjust receipt
