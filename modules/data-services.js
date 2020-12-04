@@ -312,9 +312,9 @@ module.exports = function (mongoDBConnectionString) {
             })
         },
 
-        checkReceiptByuserID: function(userID){
+        checkReceiptByuserID: function(userName){
             return new Promise((resolve,reject)=>{
-                Receipt.find({_id:userID}).exec().then((data)=>{
+                Receipt.find({user:userName}).exec().then((data)=>{
                     resolve(data);
                 }).catch((err)=>{
                     reject("checkReceiptByuserID failed");

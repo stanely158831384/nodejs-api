@@ -220,8 +220,8 @@ app.post('/api/newReceipt',(req,res)=>{
 
 
 //get receipt by id 
-app.get("/api/getReceiptByUser_id/:id",(req,res)=>{
-    data.checkReceiptByuserID(req.params.id).then((data)=>{res.json(data)}).catch((data)=>{res.json({message: data})});
+app.get("/api/getReceiptByUserName/:userName",(req,res)=>{
+    data.checkReceiptByuserID(req.params.userName).then((data)=>{res.json(data)}).catch((data)=>{res.json({message: data})});
 })
 
 //delete receipt by id
