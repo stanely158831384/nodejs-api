@@ -1,4 +1,4 @@
-const monogoDBConnectionString = "mongodb+srv://junjieZhang:034285719@cluster0.o2clf.mongodb.net/prj666New?retryWrites=true&w=majority";
+const monogoDBConnectionString = "mongodb+srv://xxxxxxxx@cluster0.o2clf.mongodb.net/prj666New?retryWrites=true&w=majority";
 const HTTP_PORT = process.env.PORT || 8080;
 
 const express = require("express");
